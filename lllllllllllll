@@ -1,0 +1,568 @@
+
+
+        local Config = {
+        WindowName = "turtleware.cc-priv",
+        Color = Color3.fromRGB(0,191,255),
+        Keybind = Enum.KeyCode.LeftBracket,
+        }
+
+        --// Library Window
+
+        local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/NotElox/uilib/main/bracket"))()
+        local Window = Library:CreateWindow(Config, game:GetService("CoreGui"))
+
+        --// Tabs
+
+        local Tab1 = Window:CreateTab("Main")
+        local Tab2 = Window:CreateTab("Changer")
+        local Tab3 = Window:CreateTab("Misc")
+        local Tab4 = Window:CreateTab("Changelogs")
+        local Tab5 = Window:CreateTab("UI Settings")
+
+        --// Sections
+
+        local Section1 = Tab1:CreateSection("Silent Aim")
+        local Section2 = Tab2:CreateSection("Animation")
+        local Section3 = Tab2:CreateSection("Skin")
+        local Section4 = Tab2:CreateSection("Face")
+        local Section5 = Tab3:CreateSection("Misc")
+        local Section6 = Tab3:CreateSection("Fov")
+        local Section7 = Tab3:CreateSection("Server")
+        local Section8 = Tab4:CreateSection("Changelog")
+        local Section9 = Tab5:CreateSection("Menu")
+        local Section10 = Tab5:CreateSection("Background")
+        local Section11 = Tab4:CreateSection("Credits")
+
+        --// Functions
+
+        function announce(title,text,time)
+            game.StarterGui:SetCore("SendNotification", {
+                Title = title;
+                Text = text;
+                Duration = time;
+            })
+        end
+
+        --// Silent Aim
+
+        local Toggle1 = Section1:CreateToggle("Silent Aim", nil, function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/akaelox/resources/main/aim3", true))()
+        end)
+
+        local Toggle2 = Section1:CreateToggle("Show Fov", nil, function(bool)
+            Aiming.ShowFOV = bool
+        end)
+
+        local TextBox1 = Section1:CreateTextBox("Prediction", "0.157 for low ping 0.178 high ping", false, function (value)
+            DaHoodSettings.Prediction = value
+        end)
+
+        local Dropdown1 = Section1:CreateDropdown("Silent Aim Part", {"Head","UpperTorso","HumanoidRootPart", "LowerTorso"}, function(objective)
+            Aiming.TargetPart = objective
+        end)
+
+        --// Animation
+
+        local Button1 = Section2:CreateButton("ZTOM", function()
+            local L_206_ = game.Players.LocalPlayer.Character.Animate
+            L_206_.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=782841498"
+            L_206_.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=782845736"
+            L_206_.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616168032"
+            L_206_.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616163682"
+            L_206_.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=5319841935"
+            L_206_.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=707829716"
+        end)
+
+        local Button2 = Section2:CreateButton("ZTM", function()
+            local L_206_ = game.Players.LocalPlayer.Character.Animate
+            L_206_.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=782841498"
+            L_206_.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=782845736"
+            L_206_.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616168032"
+            L_206_.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616163682"
+            L_206_.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=1083218792"
+            L_206_.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=707829716"
+        end)
+
+        --// Skin
+
+        local Button3 = Section3:CreateButton("Headless", function()
+            game.Players.LocalPlayer.Character.Head.Transparency = 1
+            for i,v in pairs(game.Players.LocalPlayer.Character.Head:GetChildren()) do
+            if (v:IsA("Decal")) then
+            v:Destroy()
+                end
+            end
+        end)
+
+        local Button4 = Section3:CreateButton("Korblox", function()
+            local ply = game.Players.LocalPlayer
+            local chr = ply.Character
+            chr.RightLowerLeg.MeshId = "902942093"
+            chr.RightLowerLeg.Transparency = "1"
+            chr.RightUpperLeg.MeshId = "http://www.roblox.com/asset/?id=902942096"
+            chr.RightUpperLeg.TextureID = "http://roblox.com/asset/?id=902843398"
+            chr.RightFoot.MeshId = "902942089"
+            chr.RightFoot.Transparency = "1"
+        end)
+
+        local Button5 = Section3:CreateButton("Korblox Left", function()
+            local ply = game.Players.LocalPlayer
+            local chr = ply.Character
+            chr.LeftLowerLeg.MeshId = "902942093"
+            chr.LeftLowerLeg.Transparency = "1"
+            chr.LeftUpperLeg.MeshId = "http://www.roblox.com/asset/?id=902942096"
+            chr.LeftUpperLeg.TextureID = "http://roblox.com/asset/?id=902843398"
+            chr.LeftFoot.MeshId = "902942089"
+            chr.LeftFoot.Transparency = "1"
+        end)
+
+        --// Face
+
+        local Button1 = Section4:CreateButton("Super Super Happy", function()
+            game.Players.LocalPlayer.Character.Head.face.Texture = "rbxassetid://494290547"
+        end)
+
+        local Button2 = Section4:CreateButton("Playful Vampire", function()
+            game.Players.LocalPlayer.Character.Head.face.Texture = "rbxassetid://2409281591"
+        end)
+
+        local Button3 = Section4:CreateButton("Prankster", function()
+            game.Players.LocalPlayer.Character.Head.face.Texture = "rbxassetid://20052028"
+        end)
+
+        local Button4 = Section4:CreateButton("Blizzard Beast Mode", function()
+            game.Players.LocalPlayer.Character.Head.face.Texture = "rbxassetid://209712379"
+        end)
+
+        local Button5 = Section4:CreateButton("ROBLOX Madness Face", function()
+            game.Players.LocalPlayer.Character.Head.face.Texture = "rbxassetid://129900258"
+        end)
+
+
+        --// Misc
+
+        local Button1 = Section5:CreateButton("Chat Spy", function()
+            -- // Initialise
+        --if (getgenv().ChatSpy) then return getgenv().ChatSpy; end;
+        repeat wait() until game:GetService("ContentProvider").RequestQueueSize == 0;
+        repeat wait() until game:IsLoaded();
+
+        -- // Vars
+        local Players = game:GetService("Players");
+        local StarterGui = game:GetService("StarterGui");
+        local ReplicatedStorage = game:GetService("ReplicatedStorage");
+        local LocalPlayer = Players.LocalPlayer;
+        local PlayerGui = LocalPlayer:WaitForChild("PlayerGui");
+        local DefaultChatSystemChatEvents = ReplicatedStorage:WaitForChild("DefaultChatSystemChatEvents");
+        local SayMessageRequest = DefaultChatSystemChatEvents:WaitForChild("SayMessageRequest");
+        local OnMessageDoneFiltering = DefaultChatSystemChatEvents:WaitForChild("OnMessageDoneFiltering");
+        getgenv().ChatSpy = {
+            Enabled = true,
+            SpyOnSelf = true,
+            Public = false,
+            Chat = {
+                Colour  = Color3.fromRGB(255, 0, 0),
+                Font = Enum.Font.SourceSans,
+                TextSize = 18,
+                Text = "",
+            },
+            IgnoreList = {
+                {Message = ":part/1/1/1", ExactMatch = true},
+                {Message = ":part/10/10/10", ExactMatch = true},
+                {Message = "A?????????", ExactMatch = false},
+                {Message = ":colorshifttop 10000 0 0", ExactMatch = true},
+                {Message = ":colorshiftbottom 10000 0 0", ExactMatch = true},
+                {Message = ":colorshifttop 0 10000 0", ExactMatch = true},
+                {Message = ":colorshiftbottom 0 10000 0", ExactMatch = true},
+                {Message = ":colorshifttop 0 0 10000", ExactMatch = true},
+                {Message = ":colorshiftbottom 0 0 10000", ExactMatch = true},
+            },
+        };
+
+        -- // Function
+        function ChatSpy.checkIgnored(message)
+            for i = 1, #ChatSpy.IgnoreList do
+                local v = ChatSpy.IgnoreList[i];
+                if (v.ExactMatch and message == v.Message) or (not v.ExactMatch and string.match(v.Message, message)) then
+                    return true;
+                end;
+            end;
+            return false;
+        end;
+
+        function ChatSpy.onChatted(targetPlayer, message)
+            if (targetPlayer == LocalPlayer and string.lower(message):sub(1, 4) == "/spy") then
+                ChatSpy.Enabled = not ChatSpy.Enabled; wait(0.3);
+                ChatSpy.Chat.Text = "[SPY] - "..(ChatSpy.Enabled and "Enabled." or "Disabled.");
+
+                StarterGui:SetCore("ChatMakeSystemMessage", ChatSpy.Chat);
+            elseif (ChatSpy.Enabled and (ChatSpy.SpyOnSelf or targetPlayer ~= LocalPlayer)) then
+                local message = message:gsub("[\n\r]",''):gsub("\t",' '):gsub("[ ]+",' ');
+
+                local Hidden = true;
+                local Connection = OnMessageDoneFiltering.OnClientEvent:Connect(function(packet, channel)
+                    if (packet.SpeakerUserId == targetPlayer.UserId and packet.Message == message:sub(#message - #packet.Message + 1) and (channel == "All" or (channel == "Team" and not ChatSpy.Public and Players[packet.FromSpeaker].Team == LocalPlayer.Team))) then
+                        Hidden = false;
+                    end;
+                end);
+
+                wait(1);
+                Connection:Disconnect();
+
+                if (Hidden and ChatSpy.Enabled and not ChatSpy.checkIgnored(message)) then
+                    if (#message > 1200) then
+                        message = message:sub(1200) .. "...";
+                    end;
+                    ChatSpy.Chat.Text = "[SPY] - ["..targetPlayer.Name.."]: " .. message;
+                    if (ChatSpy.Public) then SayMessageRequest:FireServer(ChatSpy.Chat.Text, "All"); else StarterGui:SetCore("ChatMakeSystemMessage", ChatSpy.Chat); end;
+                end;
+            end;
+        end;
+
+        -- // Handling Chats
+        local AllPlayers = Players:GetPlayers();
+        for i = 1, #AllPlayers do
+            local player = AllPlayers[i];
+            player.Chatted:Connect(function(message)
+                ChatSpy.onChatted(player, message);
+            end);
+        end;
+
+        Players.PlayerAdded:Connect(function(player)
+            player.Chatted:Connect(function(message)
+                ChatSpy.onChatted(player, message);
+            end);
+        end);
+
+        -- // Initialise Text
+        ChatSpy.Chat.Text = "[SPY] - "..(ChatSpy.Enabled and "Enabled." or "Disabled.");
+        StarterGui:SetCore("ChatMakeSystemMessage", ChatSpy.Chat);
+
+        -- // Update Chat Frame
+        local chatFrame = LocalPlayer.PlayerGui.Chat.Frame;
+        chatFrame.ChatChannelParentFrame.Visible = true;
+        chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Position + UDim2.new(UDim.new(), chatFrame.ChatChannelParentFrame.Size.Y);
+        end)
+
+
+    local Button3 = Section5:CreateButton("Fly", function()
+        announce('Fly','They key is x',10)
+        local plr = game.Players.LocalPlayer
+        local mouse = plr:GetMouse()
+
+        localplayer = plr
+
+        if workspace:FindFirstChild("Core") then
+        workspace.Core:Destroy()
+        end
+
+        local Core = Instance.new("Part")
+        Core.Name = "Core"
+        Core.Size = Vector3.new(0.05, 0.05, 0.05)
+
+        spawn(function()
+        Core.Parent = workspace
+        local Weld = Instance.new("Weld", Core)
+        Weld.Part0 = Core
+        Weld.Part1 = localplayer.Character.LowerTorso
+        Weld.C0 = CFrame.new(0, 0, 0)
+        end)
+
+        workspace:WaitForChild("Core")
+
+        local torso = workspace.Core
+        flying = true
+        local speed=10
+        local keys={a=false,d=false,w=false,s=false}
+        local e1
+        local e2
+        local function start()
+        local pos = Instance.new("BodyPosition",torso)
+        local gyro = Instance.new("BodyGyro",torso)
+        pos.Name="EPIXPOS"
+        pos.maxForce = Vector3.new(math.huge, math.huge, math.huge)
+        pos.position = torso.Position
+        gyro.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+        gyro.cframe = torso.CFrame
+        repeat
+        wait()
+        localplayer.Character.Humanoid.PlatformStand=true
+        local new=gyro.cframe - gyro.cframe.p + pos.position
+        if not keys.w and not keys.s and not keys.a and not keys.d then
+        speed=5
+        end
+        if keys.w then
+        new = new + workspace.CurrentCamera.CoordinateFrame.lookVector * speed
+        speed=speed+0
+        end
+        if keys.s then
+        new = new - workspace.CurrentCamera.CoordinateFrame.lookVector * speed
+        speed=speed+0
+        end
+        if keys.d then
+        new = new * CFrame.new(speed,0,0)
+        speed=speed+0
+        end
+        if keys.a then
+        new = new * CFrame.new(-speed,0,0)
+        speed=speed+0
+        end
+        if speed>10 then
+        speed=5
+        end
+        pos.position=new.p
+        if keys.w then
+        gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(-math.rad(speed*0),0,0)
+        elseif keys.s then
+        gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(math.rad(speed*0),0,0)
+        else
+        gyro.cframe = workspace.CurrentCamera.CoordinateFrame
+        end
+        until flying == false
+        if gyro then gyro:Destroy() end
+        if pos then pos:Destroy() end
+        flying=false
+        localplayer.Character.Humanoid.PlatformStand=false
+        speed=10
+        end
+        e1=mouse.KeyDown:connect(function(key)
+        if not torso or not torso.Parent then flying=false e1:disconnect() e2:disconnect() return end
+        if key=="w" then
+        keys.w=true
+        elseif key=="s" then
+        keys.s=true
+        elseif key=="a" then
+        keys.a=true
+        elseif key=="d" then
+        keys.d=true
+        elseif key=="x" then
+        if flying==true then
+        flying=false
+        else
+        flying=true
+        start()
+        end
+        end
+        end)
+        e2=mouse.KeyUp:connect(function(key)
+        if key=="w" then
+        keys.w=false
+        elseif key=="s" then
+        keys.s=false
+        elseif key=="a" then
+        keys.a=false
+        elseif key=="d" then
+        keys.d=false
+        end
+        end)
+        start()
+        end)
+
+
+    local Button4 = Section5:CreateButton("Anti Slow", function()
+            local mt = getrawmetatable(game)
+                local backup
+                backup = hookfunction(mt.__newindex, newcclosure(function(self, key, value)
+                if key == "WalkSpeed" and value < 16 then
+                value = 16
+                end
+                return backup(self, key, value)
+                end))
+        end)
+
+    local Button5 = Section5:CreateButton("Trash Talk", function()
+            local plr = game.Players.LocalPlayer
+                repeat wait() until plr.Character
+                local char = plr.Character
+
+                local garbage = {
+                "ur bad";
+                "lma() nice try bud";
+                "ez";
+                "my grandma has more skill than you";
+                "gun user";
+                "bunny hopper";
+                "trash";
+                "LOL";
+                "LMAO";
+                "imagine being you right now";
+                "xd";
+                "stinky head";
+                "you lose";
+                "why do you even try";
+                "I didn't think being this bad was possible";
+                "leave";
+                "no skill";
+                "you thought u ate lol";
+                "bad";
+                "you're nothing";
+                "lol";
+                "so trash";
+                "dog water";
+                "ur salty";
+                "salty";
+                "look he's mad";
+                "cry more";
+                "keep crying";
+                "cry baby";
+                "hahaha I won";
+                "no one likes u";
+                "darn";
+                "thank you for your time";
+                "you were so close!";
+                "better luck next time!";
+                "rodent";
+                "ur so bad ur my seed";
+                "/e dab";
+                "./e dab";
+                "time to take out the trash";
+                "did you get worse?";
+                "I'm surprised you haven't quit yet";
+            }
+                function TrashTalk(inputObject, gameProcessedEvent)
+                 if inputObject.KeyCode == Enum.KeyCode.J and gameProcessedEvent == false then
+                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
+                garbage[math.random(1,#garbage)],
+                "All"
+                )
+                     end
+                end
+                game:GetService("UserInputService").InputBegan:connect(TrashTalk)
+                announce('Trashtalk','They key is j',10)
+                end)
+
+        local Button6 = Section5:CreateButton("Full Bright", function()
+            local Light = game:GetService("Lighting")
+
+            function dofullbright()
+            Light.Ambient = Color3.new(1, 1, 1)
+            Light.ColorShift_Bottom = Color3.new(1, 1, 1)
+            Light.ColorShift_Top = Color3.new(1, 1, 1)
+            end
+
+            dofullbright()
+
+            Light.LightingChanged:Connect(dofullbright)
+        end)
+
+        local Button7 = Section5:CreateButton("No Fog", function()
+            while true do
+                wait()
+                game.Lighting.FogEnd = 1000000
+                wait()
+                end
+        end)
+
+        local Button8 = Section5:CreateButton("Auto Stomp", function()
+            while true do
+                wait(.05)
+                game.ReplicatedStorage.MainEvent:FireServer("Stomp")
+                end
+        end)
+
+        --// Fov
+
+        local Slider1 = Section6:CreateSlider("Fov", 0,120,nil,true, function(value)
+            workspace.CurrentCamera.FieldOfView = (value)
+        end)
+
+        --// Server
+
+        local Button1 = Section7:CreateButton("Rejoin", function()
+            local tpservice= game:GetService("TeleportService")
+            local plr = game.Players.LocalPlayer
+
+            tpservice:Teleport(game.PlaceId, plr)
+        end)
+
+        local Button2 = Section7:CreateButton("Server Hop", function()
+            local x = {}
+            for _, v in ipairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100")).data) do
+                if type(v) == "table" and v.maxPlayers > v.playing and v.id ~= game.JobId then
+                    x[#x + 1] = v.id
+                end
+            end
+            if #x > 0 then
+                game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, x[math.random(1, #x)])
+            else
+                print('failed to find a server')
+            end
+        end)
+
+
+        --// Changelog
+
+        Section8:CreateLabel("gg.cripware")
+        Section8:CreateLabel("Changelogs:")
+        Section8:CreateLabel("+ Better Whitelist")
+        Section8:CreateLabel("+ Different UI")
+        Section8:CreateLabel("+ Fixed Silent Aim")
+        Section8:CreateLabel("+ Chat Spy")
+        Section8:CreateLabel("+ Anti Slow")
+        Section8:CreateLabel("+ Rejoin")
+        Section8:CreateLabel("+ Server Hop")
+        Section8:CreateLabel("+ Full Bright")
+        Section8:CreateLabel("+ No Fog")
+        Section8:CreateLabel("+ More")
+        Section8:CreateLabel("- Anti Lock")
+        Section8:CreateLabel("- Realistic Speed Glitch")
+
+
+        --// Credits
+
+        Section11:CreateLabel("gg.cripware")
+        Section11:CreateLabel("Credits:")
+        Section11:CreateLabel("elox")
+        Section11:CreateLabel("rrevenge")
+        Section11:CreateLabel("ncf")
+        Section11:CreateLabel("glock")
+        Section11:CreateLabel("linux")
+        Section11:CreateLabel("peace")
+        Section11:CreateLabel("andy")
+        Section11:CreateLabel("berat")
+        Section11:CreateLabel("logic")
+
+
+        --// UI Settings
+
+        local Toggle3 = Section9:CreateToggle("UI Toggle", nil, function(State)
+            Window:Toggle(State)
+        end)
+        Toggle3:CreateKeybind(tostring(Config.Keybind):gsub("Enum.KeyCode.", ""), function(Key)
+            Config.Keybind = Enum.KeyCode[Key]
+        end)
+        Toggle3:SetState(true)
+
+        local Colorpicker3 = Section9:CreateColorpicker("UI Color", function(Color)
+            Window:ChangeColor(Color)
+        end)
+        Colorpicker3:UpdateColor(Config.Color)
+
+        local Dropdown3 = Section10:CreateDropdown("Image", {"Default","Hearts","Abstract","Hexagon","Circles","Lace With Flowers","Floral"}, function(Name)
+            if Name == "Default" then
+                Window:SetBackground("2151741365")
+            elseif Name == "Hearts" then
+                Window:SetBackground("6073763717")
+            elseif Name == "Abstract" then
+                Window:SetBackground("6073743871")
+            elseif Name == "Hexagon" then
+                Window:SetBackground("6073628839")
+            elseif Name == "Circles" then
+                Window:SetBackground("6071579801")
+            elseif Name == "Lace With Flowers" then
+                Window:SetBackground("6071575925")
+            elseif Name == "Floral" then
+                Window:SetBackground("5553946656")
+            end
+        end)
+        Dropdown3:SetOption("Default")
+
+        local Colorpicker4 = Section10:CreateColorpicker("Color", function(Color)
+            Window:SetBackgroundColor(Color)
+        end)
+        Colorpicker4:UpdateColor(Color3.new(1,1,1))
+
+        local Slider3 = Section10:CreateSlider("Transparency",0,1,nil,false, function(Value)
+            Window:SetBackgroundTransparency(Value)
+        end)
+        Slider3:SetValue(0)
